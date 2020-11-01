@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!--
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div> {{ messages }} </div>
+{% endif %}
+{% endwith %}
+-->
+<div>Hello on Home!</div>
+{% for post in posts %}
+<div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+{% endfor %}
+{% endblock %}

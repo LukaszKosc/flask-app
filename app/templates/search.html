@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>
+    <form action="/results" method="post">
+        <select name="field">
+            <option value="author">author</option>
+            <option value="title">title</option>
+            <option value="id">id</option>
+        </select>
+        </label><input type="text" name="value" value=""></br>
+
+        <input type="submit" value="Search">
+    </form>
+</div>
+{% endblock %}
+
