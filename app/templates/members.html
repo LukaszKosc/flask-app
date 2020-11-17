@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div>Hello on Home!</div>
+{% for user in users %}
+<div><p><a href="{{ url_for('user', username=user.username) }}">{{ user.username }}</a></p></div>
+{% endfor %}
+{% endblock %}

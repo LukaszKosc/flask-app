@@ -1,17 +1,32 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>
-    <form action="/results" method="post">
-        <select name="field">
-            <option value="author">author</option>
-            <option value="title">title</option>
-            <option value="id">id</option>
+<h1>Define your search</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.field.label }}:
+        <select name="field" class="selectpicker form-control">
+            {% for field in fields %}
+            <option value="{{ field.field }}">{{ field.field }}</option>
+            {% endfor %}
         </select>
-        </label><input type="text" name="value" value=""></br>
-
-        <input type="submit" value="Search">
-    </form>
-</div>
+        {% for error in form.field.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        {{ form.value.label }}:
+        {{ form.value(cols=20, rows=1) }}
+        {% for error in form.value.errors %}
+        <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        {{ form.submit(value="Search") }}
+    </p>
+</form>
+{% if posts %}
+    <b>Search results:</b>
+    {% for post in posts %}
+        <div><p>Author: {{ post.author.username }} <b>{{ post.title }}</b> {{ post.body }}</p></div>
+    {% endfor %}
+{% endif %}
 {% endblock %}
 

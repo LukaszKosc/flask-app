@@ -1,7 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div>Hello on Home!</div>
+<div>Hello on {{ title.lower()  }} page!</div>
+{% if not search_results %}
+<p><a href="{{ url_for('submit_post') }}">Add new post!</a></p>
+{% endif %}
 {% for post in posts %}
 <div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
 {% endfor %}

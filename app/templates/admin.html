@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div> {{ messages }} </div>
+{% endif %}
+{% endwith %}
+
+{% if current_user.is_admin %}
+<hr>
+Hello {{ user.username }}, you're admin.
+{% endif %}
+
+<hr>
+{% endblock %}
